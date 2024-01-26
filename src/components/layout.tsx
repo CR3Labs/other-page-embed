@@ -1,4 +1,4 @@
-import css from './style.module.css';
+import css from '../style.module.css';
 
 type LayoutProps = {
 	format: string;
