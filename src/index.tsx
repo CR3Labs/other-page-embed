@@ -1,11 +1,10 @@
 import { render } from 'preact';
-
 import { useCallback, useEffect, useState } from 'preact/hooks';
+import clsx from 'clsx';
+
 import { Logo } from './logo';
 import { Layout } from './layout';
-
 import css from './style.module.css';
-import clsx from 'clsx';
 
 enum Size {
 	Sm = 'sm',
@@ -42,10 +41,14 @@ export function App({ wallet, format, size }: RootProps) {
 	const [account, setAccount] = useState<Account>();
 	
 	const getAccount = useCallback(async () => {
-		const response = await fetch(`http://localhost:3000/api/v0/account/${wallet}/embed`);
-		const data = await response.json();
-		setAccount(data);
-		return data;
+		try {
+			const response = await fetch(`http://localhost:3000/api/v0/account/${wallet}/embed`);
+			if (response.ok) {
+				const data = await response.json();
+				setAccount(data);
+				return data;
+			}
+		} catch(err) {}
 	}, [wallet])
 
 	useEffect(() => {
@@ -53,7 +56,7 @@ export function App({ wallet, format, size }: RootProps) {
 	}, [wallet])
 
 	if (!account) {
-		return (<>...</>)
+		return (<></>)
 	}
 
 	if (format === 'avatar') {
@@ -125,7 +128,7 @@ function Card({ account }: CardProps) {
 				<div className={css.cardContent}>
 					<div>
 						<div className={clsx(css.font, css.subtitle)}>{account.primary.collectionName} #{account.primary.tokenId}</div>
-						<div className={clsx(css.font, css.title)}>{account.primary.name}</div>
+						<div className={clsx(css.font, css.title)}>{account.primary.name || 'N/A'}</div>
 					</div>
 					<div className={clsx(css.font, css.subtitle)}>Owner: {account.ens || account.address}</div>
 				</div>
