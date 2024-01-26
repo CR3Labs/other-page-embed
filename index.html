@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="color-scheme" content="light dark" />
+		<title>Other Page Embed</title>
+		<style>
+			body {
+				background-color: #111;
+			}
+			section {
+				padding: 20px;
+			}
+			h1 {
+				font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+				color: #222;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<section>
+			<h1>Icon</h1>
+			<op-embed wallet="0xba9238c4118b3052879aad7598b6efc1ce44e640" format="icon" size="md" />
+		</section>
+		
+		<section>
+			<h1>Avatar</h1>
+			<op-embed wallet="0xba9238c4118b3052879aad7598b6efc1ce44e640" format="avatar" />
+		</section>
+
+		<section>
+			<h1>Card</h1>
+			<op-embed wallet="0xba9238c4118b3052879aad7598b6efc1ce44e640" format="card" />
+		</section>
+
+		<script type="module" src="/src/index.tsx"></script>
+	</body>
+</html>

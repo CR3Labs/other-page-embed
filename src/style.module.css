@@ -1,0 +1,123 @@
+
+.font {
+	font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+	line-height: 1.5;
+	font-weight: 400;
+	color: rgb(71 79 79);
+	text-transform: uppercase;
+
+	font-synthesis: none;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-text-size-adjust: 100%;
+}
+
+/* --- helper classes --- */
+
+.block {
+	display: block;
+}
+.relative {
+	position: relative;
+}
+.sm {
+	height: 16px;
+	width: 16px;
+}
+.md {
+	height: 24px;
+	width: 24px;
+}
+.lg {
+	height: 48px;
+	width: 48px;
+}
+.xl {
+	height: 64px;
+	width: 64px;
+}
+.xl2 {
+	height: 128px;
+	width: 128px;
+}
+.xl3 {
+	height: 256px;
+	width: 256px;
+}
+
+.title {
+	color: white;
+	font-size: 32px;
+	font-weight: 400;
+}
+
+.subtitle {
+	color: rgb(71 79 79);
+	font-size: 12px;
+	font-weight: 600;
+}
+
+/* --- icon --- */
+.icon {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	border-radius: 50%;
+    background: black;
+}
+.iconLogo {
+	display: block;
+	margin-top: -10%;
+	height: 45%;
+	width: 45%;
+}
+
+/* --- avatar --- */
+.avatar {
+	display: block;
+    border: 1px solid rgb(34 38 38 / 1);
+    border-radius: 50%;
+    background: black;
+}
+
+.avatar:hover {
+	border: 1px solid rgb(71 79 79)
+}
+
+.avatarOpLogo {
+	display: flex;
+    position: absolute;
+    bottom: 0;
+    right: 8px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: black;
+    padding: 6px;
+    justify-content: center;
+}
+
+/* --- card --- */
+
+.card {
+	display: flex;
+	border: 1px solid rgb(34 38 38);
+    border-radius: 8px;
+	background: rgb(7 7 8);
+	padding: 10px;
+	text-decoration: none;
+	width: 400px;
+}
+
+.card:hover {
+	border: 1px solid rgb(71 79 79)
+}
+
+.cardContent {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	padding: 10px;
+}
