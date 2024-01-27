@@ -5,6 +5,8 @@ import { Logo } from './logo';
 import { Layout } from './layout';
 
 import css from '../style.module.css';
+import { Address } from './address';
+import { API_ENDPOINT } from '../constants';
 
 export namespace OtherPage {
 
@@ -24,6 +26,7 @@ export namespace OtherPage {
         wallet: string;
         format?: Format;
         size?: Size;
+        clipped?: boolean;
     };
 
     export interface Account {
@@ -31,6 +34,7 @@ export namespace OtherPage {
         ens: string;
         primary: {
             name: string;
+            title: string;
             collectionName: string;
             tokenId: string;
             contract: string;
@@ -39,12 +43,12 @@ export namespace OtherPage {
         };
     }
 
-    export function Embed({ wallet, format, size }: RootProps) {
+    export function Embed({ wallet, format, size, clipped }: RootProps) {
         const [account, setAccount] = useState<Account>();
         
         const getAccount = useCallback(async () => {
             try {
-                const response = await fetch(`http://localhost:3000/api/v0/account/${wallet}/embed`);
+                const response = await fetch(`${API_ENDPOINT}/account/${wallet}/embed`);
                 if (response.ok) {
                     const data = await response.json();
                     setAccount(data);
@@ -62,11 +66,11 @@ export namespace OtherPage {
         }
 
         if (format === 'avatar') {
-            return (<Avatar account={account} />)
+            return (<Avatar account={account} clipped={clipped} />)
         }
 
         if (format === 'card') {
-            return (<Card account={account} />)
+            return (<Card account={account} clipped={clipped} />)
         }
 
         return (<Icon account={account} size={size} />)
@@ -96,16 +100,22 @@ export namespace OtherPage {
     export type AvatarProps = {
         account: Account;
         size?: string;
+        clipped?: boolean;
     }
 
-    export function Avatar({ account, size }: AvatarProps) {
+    export function Avatar({ account, size, clipped }: AvatarProps) {
         return (
             <Layout format="avatar">
                 <a href={`https://app.other.page/u/${account.address}`} target="_blank">
                     <div className={clsx(css[size || 'xl2'], css.block, css.relative)}>
-                        <img src={account.primary.imageClipped} className={clsx(css[size || 'xl2'], css.avatar)} />
+                        <img src={clipped ? account.primary.imageClipped : account.primary.image } className={clsx(css[size || 'xl2'], css.avatar)} />
+                        
                         <div className={css.avatarOpLogo}>
-                            <Logo dark />
+                            <div className={clsx(css.sm, css.icon)}>
+                                <div className={clsx(css.iconLogo)}>
+                                    <Logo dark />
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </a>
@@ -118,21 +128,32 @@ export namespace OtherPage {
     export type CardProps = {
         account: Account;
         size?: string;
+        clipped?: boolean;
     }
 
-    export function Card({ account }: CardProps) {
+    export function Card({ account, clipped }: CardProps) {
         return (
             <Layout format="card">
-                <a href={`https://app.other.page/u/${account.address}`} target="_blank" className={css.card}>
+                <a href={`https://app.other.page/u/${account.address}`} target="_blank" className={clsx(css.card, css.relative)}>
                     <div>
-                        <img src={account.primary.imageClipped} className={clsx(css.xl2, css.avatar)} />
+                        <img src={clipped ? account.primary.imageClipped : account.primary.image } className={clsx(css.xl2, css.avatar)} />
                     </div>
                     <div className={css.cardContent}>
                         <div>
                             <div className={clsx(css.font, css.subtitle)}>{account.primary.collectionName} #{account.primary.tokenId}</div>
                             <div className={clsx(css.font, css.title)}>{account.primary.name || 'N/A'}</div>
                         </div>
-                        <div className={clsx(css.font, css.subtitle)}>Owner: {account.ens || account.address}</div>
+                        <div className={clsx(css.font, css.text)}>{account.primary.title}</div>
+                        <div className={clsx(css.font, css.subtitle)}>
+                            Owner: <span style={{ color: 'white' }}>{account.ens || (<Address address={account.address} />)}</span>
+                        </div>
+                    </div>
+                    <div className={css.cardOpLogo}>
+                        <div className={clsx(css.sm, css.icon)}>
+                            <div className={clsx(css.iconLogo)}>
+                                <Logo dark />
+                            </div>
+                        </div>
                     </div>
                 </a>
             </Layout>

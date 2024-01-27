@@ -4,7 +4,6 @@
 	line-height: 1.5;
 	font-weight: 400;
 	color: rgb(71 79 79);
-	text-transform: uppercase;
 
 	font-synthesis: none;
 	text-rendering: optimizeLegibility;
@@ -21,13 +20,17 @@
 .relative {
 	position: relative;
 }
+.xs {
+	height: 20px;
+	width: 20px;
+}
 .sm {
-	height: 16px;
-	width: 16px;
+	height: 28px;
+	width: 28px;
 }
 .md {
-	height: 24px;
-	width: 24px;
+	height: 32px;
+	width: 32px;
 }
 .lg {
 	height: 48px;
@@ -50,12 +53,20 @@
 	color: white;
 	font-size: 32px;
 	font-weight: 400;
+	margin-top: -4px;
+	text-transform: uppercase;
 }
 
 .subtitle {
 	color: rgb(71 79 79);
 	font-size: 12px;
 	font-weight: 600;
+	text-transform: uppercase;
+}
+
+.text {
+	color: rgb(135 144 143);
+	font-size: 12px;
 }
 
 /* --- icon --- */
@@ -69,7 +80,8 @@
 }
 .iconLogo {
 	display: block;
-	margin-top: -10%;
+	margin-top: -3px;
+	margin-left: 1px;
 	height: 45%;
 	width: 45%;
 }
@@ -77,7 +89,7 @@
 /* --- avatar --- */
 .avatar {
 	display: block;
-    border: 1px solid rgb(34 38 38 / 1);
+    border: 1px solid rgb(34 38 38);
     border-radius: 50%;
     background: black;
 }
@@ -87,26 +99,21 @@
 }
 
 .avatarOpLogo {
-	display: flex;
     position: absolute;
     bottom: 0;
     right: 8px;
-    width: 14px;
-    height: 14px;
-    border-radius: 50%;
-    background: black;
-    padding: 6px;
-    justify-content: center;
 }
 
 /* --- card --- */
 
 .card {
+	align-items: center;
 	display: flex;
 	border: 1px solid rgb(34 38 38);
     border-radius: 8px;
 	background: rgb(7 7 8);
-	padding: 10px;
+	justify-content: center;
+	padding: 10px 20px;
 	text-decoration: none;
 	width: 400px;
 }
@@ -117,7 +124,14 @@
 
 .cardContent {
 	display: flex;
+	gap: 10px;
 	flex-direction: column;
 	justify-content: space-between;
-	padding: 10px;
+	padding: 10px 20px;
+}
+
+.cardOpLogo {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
 }
