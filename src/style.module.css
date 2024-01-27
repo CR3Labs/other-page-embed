@@ -1,8 +1,7 @@
 
 .font {
 	font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-	line-height: 1.5;
-	font-weight: 400;
+	line-height: 1.15;
 	color: rgb(71 79 79);
 
 	font-synthesis: none;
@@ -51,9 +50,9 @@
 
 .title {
 	color: white;
-	font-size: 32px;
-	font-weight: 400;
-	margin-top: -4px;
+	font-size: 30px;
+    font-weight: 600;
+    margin-top: 2px;
 	text-transform: uppercase;
 }
 
