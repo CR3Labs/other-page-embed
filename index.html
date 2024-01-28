@@ -36,18 +36,28 @@
 				align-items: center;
 			}
 			code {
-				display: block;
+				box-decoration-break: clone;
 				border-radius: 4px;
 				color: white;
+				display: block;
 				font-family: monospace;
 				background: rgb(7 7 8);
 				margin: 6px 0;
+				overflow-x: auto;
 				padding: 20px;
 				word-wrap: break-word;
   				white-space: pre;
-				box-decoration-break: clone;
 			}
 		</style>
+		<script>
+			function initOP() {
+				const d = document.getElementById('op-test');
+				const newDiv = document.createElement("op-embed");
+				newDiv.setAttribute('wallet', '0xba9238c4118b3052879aad7598b6efc1ce44e640');
+				newDiv.setAttribute('format', 'icon');
+				d.appendChild(newDiv);
+			}
+		</script>
 	</head>
 	<body>
 		<div class="container">
@@ -57,7 +67,7 @@
 				</a>
 				<h1>Other Page Embed</h1>
 				<p>Use the Other Page embed to display primary avatars for wallets directly from your app.</p>
-				<code>&lt;script type=&quot;module&quot; crossorigin src=&quot;https://cdn.other.page/embed.js&quot;&gt;&lt;/script&gt;</code>
+				<code>&lt;script type=&quot;module&quot; crossorigin src=&quot;https://cdn.other.page/embed.js&quot; integrity=&quot;sha384-hh/0nCnAfttNOzfkWXBPxzslNvLandQWb3phhzAZX9dBZ24dFIq1gwhH9iYPhpO5&quot;&gt;&lt;/script&gt;</code>
 				<code>type RootProps = { <br>  wallet: string;<br>  format?: 'icon'|'avatar'|'card';<br>  size?: 'sm'|'md'|'lg';<br>  clipped?: boolean;<br>}</code>
 			</section>
 			
@@ -98,8 +108,16 @@
 					<code>&lt;op-embed wallet=&quot;0xba9238c4118b3052879aad7598b6efc1ce44e640&quot; format=&quot;card&quot; clipped=&quot;true&quot; /&gt;</code>
 				</div>
 			</section>
+
+			<section>
+				<h1>Dynamically Added</h1>
+				<button onclick="initOP()">Add New Embed</button>
+				<div id="op-test" class="embed">
+					
+				</div>
+			</section>
 		</div>
 
-		<script type="module" src="/src/index.tsx"></script>
+		<script type="module" src="/src/embed.tsx"></script>
 	</body>
 </html>

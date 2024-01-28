@@ -86,7 +86,7 @@ export namespace OtherPage {
     function Icon({ account, size }: IconProps) {
         return (
             <Layout format="icon">
-                <a href={`https://app.other.page/u/${account.address}`} target="_blank" className={clsx(css[size || 'md'], css.icon)}>
+                <a href={`https://app.other.page/u/${account.address}?utm_source=${window.location.hostname}`} target="_blank" className={clsx(css[size || 'md'], css.icon)}>
                     <div className={clsx(css.iconLogo)}>
                         <Logo dark />
                     </div>
@@ -106,7 +106,7 @@ export namespace OtherPage {
     export function Avatar({ account, size, clipped }: AvatarProps) {
         return (
             <Layout format="avatar">
-                <a href={`https://app.other.page/u/${account.address}`} target="_blank">
+                <a href={`https://app.other.page/u/${account.address}?utm_source=${window.location.hostname}`} target="_blank">
                     <div className={clsx(css[size || 'xl2'], css.block, css.relative)}>
                         <img src={clipped ? account.primary.imageClipped : account.primary.image } className={clsx(css[size || 'xl2'], css.avatar)} />
                         
@@ -134,7 +134,7 @@ export namespace OtherPage {
     export function Card({ account, clipped }: CardProps) {
         return (
             <Layout format="card">
-                <a href={`https://app.other.page/u/${account.address}`} target="_blank" className={clsx(css.card, css.relative)}>
+                <a href={`https://app.other.page/u/${account.address}?utm_source=${window.location.hostname}`} target="_blank" className={clsx(css.card, css.relative)}>
                     <div>
                         <img src={clipped ? account.primary.imageClipped : account.primary.image } className={clsx(css.xl2, css.avatar)} />
                     </div>
