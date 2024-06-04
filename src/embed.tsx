@@ -8,8 +8,9 @@ const initEmbeds = () => {
 		const wallet = nodes[i].getAttribute('wallet');
 		const format = nodes[i].getAttribute('format') as OtherPage.Format;
 		const size = nodes[i].getAttribute('size') as OtherPage.Size;
-		const clipped = !!nodes[i].getAttribute('clipped');
-		render(<OtherPage.Embed wallet={wallet} format={format} size={size} clipped={clipped} />, nodes[i]);
+		const clipped = typeof(nodes[i].getAttribute('clipped')) === 'string';
+		const dark = typeof(nodes[i].getAttribute('dark')) === 'string';
+		render(<OtherPage.Embed wallet={wallet} format={format} size={size} clipped={clipped} dark={dark} />, nodes[i]);
 	}
 };
 

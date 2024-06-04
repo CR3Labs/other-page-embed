@@ -75,14 +75,12 @@
 	align-items: center;
 	justify-content: center;
 	border-radius: 50%;
-    background: black;
 }
 .iconLogo {
 	display: block;
-	margin-top: -3px;
-	margin-left: 1px;
-	height: 45%;
-	width: 45%;
+	width: 100%;
+	border-radius: 50%;
+	overflow: hidden;
 }
 
 /* --- avatar --- */

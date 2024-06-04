@@ -102,12 +102,12 @@
 			  </div>
 			  <div class="header-nav">
 				<div class="header-item">
-				  <a href="/index.html" class="header-item-link">
+				  <a href="/" class="header-item-link">
 					API Reference
 				  </a>
 				</div>
 				<div class="header-item">
-				  <a href="/embed/index.html" class="header-item-link active">
+				  <a href="/embed/" class="header-item-link active">
 					Embed
 				  </a>
 				</div>
@@ -119,7 +119,7 @@
 				<h1>Other Page Embed</h1>
 				<p>Use the Other Page embed to display primary avatars for wallets directly from your app.</p>
 				<code>&lt;script type=&quot;module&quot; crossorigin src=&quot;https://cdn.other.page/embed.js&quot; integrity=&quot;sha384-hh/0nCnAfttNOzfkWXBPxzslNvLandQWb3phhzAZX9dBZ24dFIq1gwhH9iYPhpO5&quot;&gt;&lt;/script&gt;</code>
-				<code>type RootProps = { <br>  wallet: string;<br>  format?: 'icon'|'avatar'|'card';<br>  size?: 'sm'|'md'|'lg';<br>  clipped?: boolean;<br>}</code>
+				<code>type RootProps = { <br>  wallet: string;<br>  format?: 'icon'|'avatar'|'card';<br>  size?: 'sm'|'md'|'lg';<br>  clipped?: boolean;<br>  dark?: boolean;<br>}</code>
 			</section>
 			
 			<section>
@@ -132,11 +132,11 @@
 						<op-embed wallet="0xba9238c4118b3052879aad7598b6efc1ce44e640" format="icon" size="sm" />
 					</div>
 					<div class="embed">
-						<op-embed wallet="0xba9238c4118b3052879aad7598b6efc1ce44e640" format="icon" size="md" />
+						<op-embed wallet="0xba9238c4118b3052879aad7598b6efc1ce44e640" format="icon" size="md" dark />
 					</div>
 				</div>
 				<div>
-					<code>&lt;op-embed wallet=&quot;0xba9238c4118b3052879aad7598b6efc1ce44e640&quot; format=&quot;icon&quot; size=&quot;sm&quot; /&gt;</code>
+					<code>&lt;op-embed wallet=&quot;0xba9238c4118b3052879aad7598b6efc1ce44e640&quot; format=&quot;icon&quot; size=&quot;sm&quot; dark /&gt;</code>
 				</div>
 			</section>
 			
@@ -156,7 +156,7 @@
 					<op-embed wallet="0x638b1350920333d23a7a7472c00aa5c38c278b90" format="card" clipped="true" />
 				</div>
 				<div>
-					<code>&lt;op-embed wallet=&quot;0xba9238c4118b3052879aad7598b6efc1ce44e640&quot; format=&quot;card&quot; clipped=&quot;true&quot; /&gt;</code>
+					<code>&lt;op-embed wallet=&quot;0xba9238c4118b3052879aad7598b6efc1ce44e640&quot; format=&quot;card&quot; clipped /&gt;</code>
 				</div>
 			</section>
 

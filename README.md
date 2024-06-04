@@ -6,6 +6,6 @@ The Other Page Embed enables embedded dynamic primary avatars based on wallet ad
 ## Usage
 
 ```html
-<script type="module" crossorigin src="https://cdn.other.page/embed.js" integrity="sha384-6XjaEP8uEquK70QwOlPpxRHrKGpUGcqrPd9+07seaVhV6M7gQOwYkcz8TB/1UuIF"></script>
+<script type="module" crossorigin src="https://cdn.other.page/embed.js" integrity="sha384-qrNh3PXst/Yr03YemQ/ZvslAMIpUhR3qg1kP7yxvC4KIzHj1KxjCtAAqeESCKFml"></script>
 <op-embed wallet="0xba9238c4118b3052879aad7598b6efc1ce44e640" format="icon" />
 ```

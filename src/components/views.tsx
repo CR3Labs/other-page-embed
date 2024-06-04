@@ -27,6 +27,7 @@ export namespace OtherPage {
         format?: Format;
         size?: Size;
         clipped?: boolean;
+        dark?: boolean;
     };
 
     export interface Account {
@@ -43,7 +44,7 @@ export namespace OtherPage {
         };
     }
 
-    export function Embed({ wallet, format, size, clipped }: RootProps) {
+    export function Embed({ wallet, format, size, clipped, dark }: RootProps) {
         const [account, setAccount] = useState<Account>();
         
         const getAccount = useCallback(async () => {
@@ -58,7 +59,6 @@ export namespace OtherPage {
         }, [wallet])
 
         useEffect(() => {
-            console.log(wallet);
             getAccount();
         }, [wallet])
 
@@ -74,7 +74,7 @@ export namespace OtherPage {
             return (<Card account={account} clipped={clipped} />)
         }
 
-        return (<Icon account={account} size={size} />)
+        return (<Icon account={account} size={size} dark={dark} />)
     }
 
     // ------- Icon ------- //
@@ -82,14 +82,15 @@ export namespace OtherPage {
     export type IconProps = {
         account: Account;
         size?: string;
+        dark?: boolean;
     }
 
-    function Icon({ account, size }: IconProps) {
+    function Icon({ account, size, dark }: IconProps) {
         return (
             <Layout format="icon">
-                <a href={`https://other.page/u/${account.address}?utm_source=${window.location.hostname}`} target="_blank" className={clsx(css[size || 'md'], css.icon)}>
+                <a href={`https://other.page/u/${account.address}?utm_source=${window.location.hostname}`} target="_blank" className={clsx(css[size || 'md'], css.icon, dark ? css.iconDark : css.iconLight )}>
                     <div className={clsx(css.iconLogo)}>
-                        <Logo dark />
+                        <Logo dark={dark} />
                     </div>
                 </a>
             </Layout>
@@ -102,9 +103,10 @@ export namespace OtherPage {
         account: Account;
         size?: string;
         clipped?: boolean;
+        dark?: boolean;
     }
 
-    export function Avatar({ account, size, clipped }: AvatarProps) {
+    export function Avatar({ account, size, clipped, dark }: AvatarProps) {
         return (
             <Layout format="avatar">
                 <a href={`https://other.page/u/${account.address}?utm_source=${window.location.hostname}`} target="_blank">
@@ -114,7 +116,7 @@ export namespace OtherPage {
                         <div className={css.avatarOpLogo}>
                             <div className={clsx(css.sm, css.icon)}>
                                 <div className={clsx(css.iconLogo)}>
-                                    <Logo dark />
+                                    <Logo dark={dark} />
                                 </div>
                             </div>
                         </div>
@@ -130,9 +132,10 @@ export namespace OtherPage {
         account: Account;
         size?: string;
         clipped?: boolean;
+        dark?: boolean;
     }
 
-    export function Card({ account, clipped }: CardProps) {
+    export function Card({ account, clipped, dark }: CardProps) {
         return (
             <Layout format="card">
                 <a href={`https://other.page/u/${account.address}?utm_source=${window.location.hostname}`} target="_blank" className={clsx(css.card, css.relative)}>
@@ -152,7 +155,7 @@ export namespace OtherPage {
                     <div className={css.cardOpLogo}>
                         <div className={clsx(css.sm, css.icon)}>
                             <div className={clsx(css.iconLogo)}>
-                                <Logo dark />
+                                <Logo dark={dark} />
                             </div>
                         </div>
                     </div>
